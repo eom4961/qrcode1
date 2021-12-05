@@ -23,8 +23,6 @@ public class CreateQR extends AppCompatActivity {
     private ImageView iv;
     private String text;
 
-    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference conditionRef = mRootRef.child("엄영민");
 
 
 
@@ -37,7 +35,7 @@ public class CreateQR extends AppCompatActivity {
 
         iv = findViewById(R.id.qrcode);
         //QR 스켄시 이동
-        text = conditionRef;
+        text = "conditionRef";
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try{
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,200,200);
