@@ -16,7 +16,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 
-
+git
 
 public class ScanQR extends AppCompatActivity {
 
