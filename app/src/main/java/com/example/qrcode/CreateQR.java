@@ -1,23 +1,18 @@
 package com.example.qrcode;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.service.autofill.UserData;
 import android.widget.ImageView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class CreateQR extends AppCompatActivity {
     private ImageView iv;
@@ -35,16 +30,16 @@ public class CreateQR extends AppCompatActivity {
 
         iv = findViewById(R.id.qrcode);
         //QR 스켄시 이동
-        text = "conditionRef";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        text = user.getUid();
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-        try{
-            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,200,200);
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             iv.setImageBitmap(bitmap);
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
     }
-
-
-
 }

@@ -11,9 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QRcode" >
         <activity
-            android:name=".Information"
-            android:exported="false" />
-        <activity
             android:name=".ScanQR"
             android:exported="false" />
         <activity
